@@ -54,4 +54,4 @@ user.save()
 
 if user_type ==CustomUser.STAFF :
    staFFs.objects.create(admin=user)
-   elif user_type ==customuser.students
+   elif user_type ==CustomUser.STUDENT:
