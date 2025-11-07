@@ -40,4 +40,18 @@ def dologin(request):
     username = email_id.split('@')[0].split('..')[0]
 
     if CustomUser.objects.filter(email=email_id).exists():
-      messages.error(request,'user with this email already exists
+      messages.error(request,'user with this email already exists.please choose a different email.')
+      return render(request,  'registration.html')
+
+user = CustomUser()
+user.username = username
+user.email = email_id
+user.first_name=first_name
+user.last_name=last_name
+user.user_type= user_type
+user.set_password(password)
+user.save()
+
+if user_type ==CustomUser.STAFF :
+   staFFs.objects.create(admin=user)
+   elif user_type ==customuser.students
